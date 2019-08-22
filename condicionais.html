@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Condicionais</title>
+    </head>
+    <body>
+        <script>
+            if (true) {
+                console.log('Hello, World!');
+            }   //Hello, World!
+
+            if (false) {
+                console.log('Não vai ser!');
+            }   //nem vai printar nada, nem mesmo vazio
+
+            if (!false) {
+                console.log('Não vai ser!');
+            }   //Não vai ser!
+
+            if (3 > 4) {
+                console.log('3 > 4');
+            }   //nem vai printar nada, nem mesmo vazio
+
+            if (3 <= 4) {
+                console.log('3 <= 4');
+            }   //3 <= 4
+
+            var textoVazio = '';
+            if (textoVazio) {
+                console.log('textoVazio');
+            }   //nem vai printar nada, nem mesmo vazio (pois string vazia é false)
+
+            if (!textoVazio) {
+                console.log('textoVazio');
+            }   //textoVazio (pois string vazia negada é true)
+
+            if (!textoVazio) {
+                console.log('oi');
+            } else {
+                console.log('olá');
+            }   //oi (pois !textoVazio é true)
+
+            if (10 > 20) {
+                console.log('10 > 20');
+            } else if (10 <= 12) {
+                console.log('10 <= 12');
+            } else {
+                console.log('Programador');
+            }   //10 <= 12
+
+            if (10 > 20) {
+                console.log('10 > 20');
+            } else if (10 >= 12) {
+                console.log('10 >= 12');
+            }   //nem vai printar nada, nem mesmo vazio
+
+            if (10 > 20) {
+                console.log('10 > 20');
+            } else if (10 >= 12) {
+                console.log('10 >= 12');
+            } else {
+                console.log('else');
+            }   //else
+
+            //Operador Ternário (simplificação do if-else)
+            // ?(se)    :(else)
+            console.log(true ? 'Programador' : 'Designer');  //Programador
+            console.log(false ? 'Programador' : 'Designer');  //Designer
+
+            var idade = 24;
+            console.log(idade >= 18 ? 'Maior de idade' : 'Menor de idade'); //Maior de idade
+        </script>
+    </body>
+</html>

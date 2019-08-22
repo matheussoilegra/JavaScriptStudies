@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Operadores Lógicos</title>
+    </head>
+    <body>
+        <script>
+            var a = true;
+            var b = false;
+            
+            console.log(a); //true
+            console.log(b); //false
+
+            console.log('!!a', !!a);    //true
+            console.log('!!b', !!b);    //false    
+
+            //null, undefined, '', false, 0
+            console.log('nul', null);   //null
+            console.log('!null', !null);    //true
+            console.log('!!null', !!null);  //false
+
+            console.log('undefined', undefined) //undefined
+            console.log('!undefined', !undefined)   //true
+            console.log('!!undefined', !!undefined) //false
+
+            console.log('string vazia', '');    //vazio
+            console.log('negação string vazia', !'');   //true
+            console.log('negação dupla string vazia', !!'');    //false
+
+            console.log('0', 0);    //0
+            console.log('!0', !0);  //true
+            console.log('!!0', !!0);    //false
+
+            console.log('texto', 'texto');  //texto
+            console.log(!'texto');  //false
+            console.log(!!'texto'); //true
+
+            console.log('20', 20);  //20
+            console.log('!20', !20);    //false
+            console.log('!!20', !!20);  //true
+
+            console.log(10 && 'texto' && 'Programador'); //Programador (pois se todas expresssões são verdadeiras então vai retornar a última expressão)
+
+            console.log(null && 'Programador'); //null (null é false, então retorna o primeiro valor que deu false)
+
+            console.log('Programador' && 0 && 'usuário'); //0 (como 0 é false, então já invalida tudo e retorna o primeiro valor false, que é o zero)
+
+            console.log('Programador' && null); //null (pois null é false)
+            
+            console.log('Programador' && 0); //0 (pois 0 é false)
+
+            console.log('Programador' && 100 && '' && 'teste' && null) //vazio (pois retornou o primeiro valor false)
+
+            console.log(10 > 5 && 7 < 10); //true
+
+            console.log(10 > 5 && 10 > 11); // false
+
+
+            //Operador 'ou' ||: retorna a primeira expressão verdadeira se tiver uma true; retorna false se tiver somente expressões falses
+            console.log(null || 'Programador'); //Programador
+
+            console.log(null || 'Programador' || 26); //Programador
+
+            console.log(null || '' || 26);  //26
+
+            console.log('Programador' || 'teste')   //Programador
+
+            console.log(10 > 5 || 10 < 11)  //true (pois, já identificou que 10 > 5)
+
+            console.log(10 > 5 || 10 > 11)  //true (pois, já identificou que 10 > 5)
+
+            console.log(10 < 5 || 10 > 11)  //false (pois todas são false e retornará o último valor false)
+
+            console.log(null || '' || 0);  //0 (pois todas são false e retornará o último valor false)
+
+
+            //Combinando && e || (&& é mais forte)
+            console.log('Programador' && 2050 || '' && 26); //2050 (pois já identificou que o último valor true encontrado)
+
+            console.log('Programador' && 2050 && 'usuário' || 0); //usuário (pois já identificou que o último valor true encontrado)
+
+            console.log(null || !'' && 'Programador')   //Programador (pois na primeira comparação retornou true e a segunda comparação também é true, logo retorna o último valor true encontrado);
+        </script>
+    </body>
+</html>

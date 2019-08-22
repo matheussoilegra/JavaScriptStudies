@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Strings</title>
+    </head>
+    <body>
+        <script>
+            var nome = 'Programador a Bordo!';
+            console.log(nome);
+            console.log(nome.length);
+
+            console.log('Programador'.length);
+            console.log(nome.toUpperCase());
+            console.log(nome.toLowerCase());
+            console.log(nome.indexOf('dor'));
+            console.log(nome.indexOf('teste'));
+            console.log(nome.replace('Programador', 'Desenvolvedor'));
+            console.log(nome.slice(3, 8));
+
+            var canalYoutube = '       Programador a Bordo';
+            console.log(canalYoutube);
+            console.log(canalYoutube.trim());
+
+            var usuario = 'Matheus';
+            console.log('O canal do YouTube ' + canalYoutube.trim() + ' foi acessado por ' + usuario);
+
+            console.log(`O canal do YouTube ${canalYoutube.trim()} foi acessado por ${usuario}`);
+        </script>
+    </body>
+</html>

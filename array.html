@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Array</title>
+    </head>
+    <body>
+        <script>
+            var numeros = [5, 3, 12 , 17, 10, 99];
+            console.log(numeros);   //[5, 3, 12 , 17, 10, 99]
+
+            console.log(numeros[2]); //12
+            console.log(numeros[5]); //99
+            console.log(numeros[0]); //5
+
+            console.log(numeros.length);    //6 (pois é quantidade de itens no array)
+
+
+            //Método .pop(): remove último item de um array e retorna esse item
+            var numeroRetornado = numeros.pop();
+            console.log('numeroRetornado', numeroRetornado); //99 (pois remove último item do array e retorna último item do array)
+            console.log(numeros);   //[5, 3, 12 , 17, 10]
+
+            //Método .slice(): retorna uma fatia de um array, aceita dois parâmetros que são a posição inicial e a posição final (acrescentar +1 nessa posição para pegar a posição correta)
+            console.log(numeros.slice(2, 4));   //[12, 17]
+
+            console.log(numeros.slice(3));  //[17, 10] (pois omitiu a posição final; está sendo utilizado o array sem o 99 no final)
+
+
+            //Método .join(): transforma seus valores do array em uma string
+            console.log(numeros.join('--'));    //5--3--12--17--10
+
+            console.log(numeros.join(' '));    //5 3 12 17 10
+
+
+            var usuario = [
+                'Matheus',
+                24,
+                'ilegra',
+                'Brasileiro'
+            ];
+            console.log(usuario);   //["Matheus", 26, "ilegra", "Brasileiro"]
+
+            //Método .push(): adiciona item no fim de um array
+            usuario.push('RS');
+            console.log(usuario);   //["Matheus", 26, "ilegra", "Brasileiro", "RS"]
+
+            //Método .includes(): verifica se um item está dentro do array e retorna true ou false
+            console.log(usuario.includes('Brasileiro'));    //true
+            console.log(usuario.includes('Japonês'));    //false
+            console.log(usuario.includes('24'));    //false (pois coloquei como string)
+            console.log(usuario.includes(24));    //true
+
+            //Método .indexOf(): verifica se um item está dentro do array e retorna a posição dele
+            console.log(usuario.indexOf(24)); //1
+            console.log(usuario.indexOf('24')); //-1 (pois não existe string '24')
+
+            //Juntando dois arrays
+            var arr1 = [3, 2, 1];
+            var arr2 = ['Programador', 'Matheus', 'Frontend'];
+            var resultado1 = arr1.concat(arr2);
+            console.log(resultado1);  //[3, 2, 1, "Programador", "Matheus", "Frontend"]
+
+            var resultado2 = arr2.concat(arr1);
+            console.log(resultado2);    //["Programador", "Matheus", "Frontend", 3, 2, 1]
+
+            var resultado3 = arr2.concat(arr1).concat(['teste', 'Fulano', 'Ciclano']);
+            console.log(resultado3);    //["Programador", "Matheus", "Frontend", 3, 2, 1, "teste", "Fulano", "Ciclano"]
+
+            var resultado4 = arr2.concat(arr1, ['teste', 'Fulano', 'Ciclano'])
+            console.log(resultado4);    //["Programador", "Matheus", "Frontend", 3, 2, 1, "teste", "Fulano", "Ciclano"]
+
+            console.log([...arr1, arr2]); //[3, 2, 1, Array(3)]
+            console.log([...arr1, ...arr2, ...['teste', 'Fulano', 'Ciclano']]);  //[3, 2, 1, "Programador", "Matheus", "Frontend", "teste", "Fulano", "Ciclano"]
+
+            //Printar valores de um array de forma individual
+            console.log(usuario);   //["Matheus", 24, "ilegra", "Brasileiro", "RS"]
+
+            var nome = usuario[0];
+            console.log(nome)   //Matheus
+
+            var idade = usuario[1];
+            var nacionalidade = usuario[3];
+            console.log(nome, idade, nacionalidade);    //Matheus 24 Brasileiro
+
+            //Retira variáveis de um array (array destructuring)
+            var [nome, idade, , nacionalidade] = usuario;
+            console.log(nome, idade, nacionalidade);    //Matheus 24 Brasileiro
+        </script>
+    </body>
+</html>
