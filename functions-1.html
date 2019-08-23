@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Functions</title>
+    </head>
+    <body>
+        <script>
+            function escreva() {
+                console.log('Olá!');
+            }
+
+            escreva();
+
+
+            function escrevaMensagem(mensagem) {
+                console.log(mensagem);
+            }
+
+            escrevaMensagem('Hello, World!');
+            escrevaMensagem('Código novo.');
+            
+
+
+            function soma(a, b) {
+                return a + b;
+            }
+
+            var resultadoSoma = soma(10, 5);
+            console.log(resultadoSoma);
+            console.log(soma(10,5));
+
+
+            function somaTudo(numeros) {
+                var total = 0;
+                for (var num of numeros) {
+                    total = total + num;
+                }
+                return total;
+            }
+
+            var arrayNumeros = [3, 5, 7, 10, 9, 12, 5];
+            var resultado = somaTudo(arrayNumeros);
+            console.log('somaTudo', resultado);
+
+
+            //Quando não sabe quantos parâmetros a function vai receber, utilizar parâmetro rest (...complementos)
+            function escreveEndereco(rua, cidade, pais, ...complementos) {
+                console.log(rua);   //Rua W.L
+                console.log(cidade);    //Porto Alegre
+                console.log(pais);  //Brasil
+                console.log(complementos);  //["Estado RS", "Casa xpto", "CEP 123", "Bloco X"]
+            }
+
+            escreveEndereco('Rua W.L', 'Porto Alegre', 'Brasil', 'Estado RS', 'Casa xpto', 'CEP 123', 'Bloco X');
+
+            //Criando funtion autoexecutável: (funcion nomeFuntion(){}())
+            (function autoExecuta(nome) {
+                console.log('Executei', nome);
+            }('Matheus'));
+
+
+            var subtraiDoisNumeros = function subtrai(a, b) {
+                return a - b;
+            };
+
+            console.log(subtraiDoisNumeros(10, 3));
+
+
+            //Função anônima
+            var subtraiTresNumeros = function (a, b, c) {
+                return a - b - c;
+            };
+
+            console.log(subtraiTresNumeros(15, 3, 6));
+
+
+            //Função Callback: passa uma function como parâmetro de outra function e é executada dentro dela
+            function somaCallback1(a, b, fnCallback1) {
+                return a + b;
+            }
+
+            console.log(somaCallback1(10, 3));  //13
+
+            //Utilizando Callback
+            function somaCallback(a, b, fnCallback) {
+                return fnCallback(a + b);   //13
+            }
+
+            var multiplica = function(total) {
+                return total * 2;   //26
+            };
+
+            console.log(somaCallback(10, 3, multiplica));
+
+            //ou
+            function somaCallback(a, b, fnCallback) {
+                return fnCallback(a + b);   //13
+            }
+
+            console.log(somaCallback(10, 3, function(total) {
+                return total * 2;   //26
+            }));
+
+            console.log(somaCallback(5, 2, function(total) {
+                return total + 20;
+            }));
+
+            console.log(somaCallback(23, 11, function(total) {
+                return total / 2;
+            }));
+
+
+            //Function assumindo valor padrão: nome = 'Matheus'
+            function escreveNome(nome = 'Matheus', idade) {
+                console.log(nome);
+                console.log(idade);
+            }
+
+            escreveNome();  //Matheus //undefined
+
+            //ou
+            function escreveNome2(nome2 = 'Matheus', idade2 = 24) {
+                console.log(nome2);
+                console.log(idade2);
+            }
+
+            escreveNome2();  //Matheus //24
+
+            //ou
+            function escreveNome3(nome3, idade3) {
+                console.log(nome3);
+                console.log(idade3);
+            }
+
+            escreveNome3();  //undefined //undefined
+            
+            //ou
+            function escreveNome4(nome4, idade4) {
+                console.log(nome4);
+                console.log(idade4);
+            }
+
+            escreveNome4('Oliveira', 28);  //Oliveira //28
+        </script>
+        </script>
+    </body>
+</html>
