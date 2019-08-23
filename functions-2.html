@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Objects</title>
+    </head>
+    <body>
+        <script>
+            function Usuario() {
+                this.nome = 'Matheus';
+                this.idade = 24;
+                this.soma = function(a, b) {
+                    return a + b;
+                }
+            }
+
+            var usuario = new Usuario();
+            console.log(usuario);
+
+            console.log(usuario.nome);  //Matheus
+            console.log(usuario.idade); //24
+            console.log(usuario.soma(10, 4));   //14
+
+
+            //call
+            function Personagem(parametro1, parametro2, parametro3) {
+                console.log(parametro1, parametro2, parametro3);
+                console.log('personagemThis', this);    //personagemThis {nome: "Oliveira"}
+            }
+
+            var personagemThis = {
+                nome: 'Oliveira'
+            }
+
+            //Personagem.call(personagemThis, 'parametro1', 'parametro2', 'parametro3')
+            Personagem.call(personagemThis, 'param1', 123, [5])
+
+            //apply: passar parâmetros entre arrays
+            Personagem.apply(personagemThis, ['param$$$', 567, [1, 2, 3]])  //param$$$ 567 (3) [1, 2, 3]    //personagemThis {nome: "Oliveira"}
+
+            //bind: não invoca a function, apenas retorna uma nova function
+            var pers = Personagem.bind(personagemThis, 'Hello', 'World', '!!!')
+            pers(); //Hello World !!!
+
+
+            //Arrow functions
+            var soma = (a, b) => {
+                return a + b;
+            }
+            console.log(soma(10, 10));  //20
+
+
+            var soma = (a, b) => a + b
+            console.log(soma(10, 11));  //21
+
+
+            var soma = (a, b) => (
+                a + b
+            )
+            console.log(soma(10, 12));  //22
+
+
+            var retornaUsuario = () =>  ({
+                    nome: 'Matheus',
+                    idade: 24
+                })
+
+            console.log(retornaUsuario());  //{nome: "Matheus", idade: 24}
+
+            //ou
+            //(cidade) com () opcional por ser só um parâmetro
+            var retornaUsuario = (cidade) =>  (
+                {
+                    nome: 'Matheus',
+                    idade: 24,
+                    cidade
+                }
+            )
+
+            console.log(retornaUsuario('Porto Alegre'));  //{nome: "Matheus", idade: 24, cidade: "Porto Alegre"}
+        </script>
+    </body>
+</html>
