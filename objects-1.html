@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Objects</title>
+    </head>
+    <body>
+        <script>
+            var usuario = {
+                nome: 'Matheus',
+                idade: 24,
+                estado: 'RS',
+                'ultimo-nome': 'Oliveira',
+                competencias: {
+                    linguagens: ['JavaScript', 'Python', 'Go', 'Scala', 'PHP'],
+                    instrumentosMusicais: ['Guitarra', 'Baixo', 'Bateria']
+                }
+            };
+
+            console.log(usuario);
+            console.log(usuario.nome);
+            console.log(usuario.idade);
+            console.log(usuario.estado);
+
+            //ou
+            console.log(usuario['estado']);
+            console.log(usuario['ultimo-nome']) //Oliveira
+
+            usuario.ano = 2019;
+            console.log(usuario);
+            console.log(usuario.ano);
+            
+            delete usuario.idade;
+            console.log(usuario);
+
+            usuario.hobbies = ['Música', 'Programar', 'Viajar'];
+            console.log(usuario);
+
+
+            //Object com Function dentro dele
+            var usuario2 = {
+                digaOi: function(nome) {
+                    return `Olá ${nome}`;
+                }
+            };
+
+            console.log(usuario2.digaOi('Matheus'));    //Olá Matheus
+            console.log(usuario2.digaOi('Oliveira'));    //Olá Oliveira
+
+
+            //ou
+            var usuario2 = {
+                digaOi(nome) {
+                    return `Olá ${nome}`;
+                }
+            };
+
+            console.log(usuario2.digaOi('Matheus'));    //Olá Matheus
+            console.log(usuario2.digaOi('Oliveira'));    //Olá Oliveira
+
+
+            //Valor de uma variável em um object
+            var cor = 'verde';
+
+            var usuario3 = {
+                nome: 'Matheus',
+                cor: cor    //variável cor recebida
+            };
+
+            console.log(usuario3);  //{nome: "Matheus", cor: "verde"}
+
+            //ou
+            var cor = 'verde';
+
+            var usuario3 = {
+                nome: 'Matheus',
+                cor
+            };
+
+            console.log(usuario3);  //{nome: "Matheus", cor: "verde"}
+
+
+            //Merge de vários objects em um só
+            var usuario4 = {
+                nome: 'Matheus',
+                idade: 24
+            };
+
+            var extraInfo = {
+                pais: 'Brasil',
+                estado: 'RS'
+            };
+
+            //Object.assign(alvo, objetos a serem mergeados);
+            var novoUsuario = Object.assign({}, usuario4, extraInfo);
+            console.log(novoUsuario);   //{nome: "Matheus", idade: 24, pais: "Brasil", estado: "RS"}
+
+            Object.assign(usuario4, extraInfo);
+            console.log('usuario4', usuario4);  //usuario4 {nome: "Matheus", idade: 24, pais: "Brasil", estado: "RS"}
+
+            //ou fazer um spread
+            var novoUsuario2 = {
+                ...usuario4,
+                ...extraInfo,
+                ...{
+                    sexo: 'M',
+                    profissao: 'Programador'
+                }
+            };
+
+            console.log(novoUsuario2);  //{nome: "Matheus", idade: 24, pais: "Brasil", estado: "RS", sexo: "M", 'Programador'}
+
+
+            var nomeVariavel = 'Estado';
+            var nome = 'lasName';
+
+            var usuario5 = {
+                nome: 'Matheus',
+                [nome]: 'Matheus',
+                [nomeVariavel]: 'RS'
+            };
+
+            console.log(usuario5);  //{nome: "Matheus", lasName: "Matheus", Estado: "RS"}
+
+
+            //getters e setters
+            var usuarios = [
+                {
+                    nome: 'Matheus',
+                    idade: 26
+                },
+                {
+                    nome: 'Maria',
+                    idade: 27
+                },
+                {
+                    nome: 'João',
+                    idade: 32
+                }
+            ];
+
+            console.log(usuarios);  //[{…}, {…}, {…}]
+            console.log(usuarios[1]);    //{nome: "Maria", idade: 27}
+            console.log(usuarios[1].nome);  //Maria
+            console.log(usuarios[2].idade);  //32
+
+            var usuario = {
+                posicao: 0,
+                get atual() {
+                    return usuarios[this.posicao]
+                },
+
+                set atual(posicao) {
+                    this.posicao = posicao;
+                },
+                proximo() {
+                    ++this.posicao;
+                },
+                anterior() {
+                    --this.posicao;
+                }
+            };
+
+            //Usando Get, pois não atribui valor e usando o return
+            console.log(usuario.atual);   //{nome: "Matheus", idade: 26}
+            
+            usuario.proximo();
+            console.log(usuario.atual); //{nome: "Maria", idade: 27}
+            
+            usuario.proximo();
+            console.log(usuario.atual); //{nome: "João", idade: 32}
+            
+            usuario.anterior();
+            console.log(usuario.atual); //{nome: "Maria", idade: 27}
+
+            //Usando Set, pois atribuiu valor após o igual
+            usuario.atual = 0;
+            console.log(usuario.atual); //{nome: "Matheus", idade: 26}
+
+            usuario.atual = 2;
+            console.log(usuario.atual); //{nome: "João", idade: 32}
+        </script>
+    </body>
+</html>
