@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Objects</title>
+    </head>
+    <body>
+        <script>
+            var novoUsuario = {
+                nome: 'Matheus',
+                idade: 24,
+                pais: 'Brasil',
+                estado: 'RS'
+            };
+
+            //Usando Destructuring para extrair a propriedade idade do objeto novoUsuario
+            var { nome, idade } = novoUsuario;
+            console.log(nome, idade);   //Matheus 24
+
+            var { nome: primeiroNome } = novoUsuario;
+            console.log(primeiroNome);  //Matheus
+
+            var { estado: estadoAtual } = novoUsuario;
+            console.log(estadoAtual);   //RS
+
+
+            var novoUsuario2 = {
+                nome: {
+                    primeiro: 'Matheus2',
+                    ultimo: 'Oliveira'
+                }
+            };
+
+            var { nome: { primeiro }} = novoUsuario2;
+            console.log(primeiro);  //Matheus2
+
+            var { nome: { segundo = 'Santos' }} = novoUsuario2;
+            console.log(segundo);  //Santos
+
+            var { nome: { ultimo = 'Santos' }} = novoUsuario2;
+            console.log(ultimo);  //Oliveira (pois já tem um valor declarado para essa propriedade)
+
+
+            function imprimeUsuario(usuario) {
+                console.log(usuario.nome);
+                console.log(usuario.idade);
+                console.log(usuario.sexo);
+            }
+
+            var usuarioFunction = {
+                nome: 'Matheus Oliveira',
+                idade: 24,
+                sexo: 'M'
+            };
+
+            imprimeUsuario(usuarioFunction); //Matheus Oliveira 24 M
+
+            //ou
+            function imprimeUsuario({nome, idade, sexo, pais = 'Japão'}) {
+                console.log(nome);
+                console.log(idade);
+                console.log(sexo);
+                console.log(pais);
+            }
+
+            var usuarioFunction = {
+                nome: 'Matheus Oliveira',
+                idade: 24,
+                sexo: 'M',
+                pais: 'Brasil'
+            };
+
+            imprimeUsuario(usuarioFunction); //Matheus Oliveira 24 M Brasil
+
+            console.log(Object.keys(usuarioFunction));  //["nome", "idade", "sexo", "pais"]
+
+            console.log(Object.values(usuarioFunction));    //["Matheus Oliveira", 24, "M", "Brasil"]
+
+
+            var props = Object.keys(usuarioFunction);
+            console.log(props); //["nome", "idade", "sexo", "pais"]
+
+            for(var i = 0; i < props.length; i++) {
+                console.log(props[i]);  //nome //idade //sexo //pais
+                console.log(usuarioFunction[props[i]])  //Matheus   //24    //M     //Brasil
+            }
+
+            //ou for-of (itera com um array props)
+            for (var prop of props) {
+                console.log('usuarioFunction2', usuarioFunction[prop]); 
+                //usuarioFunction2 Matheus Oliveira //usuarioFunction2 24   //usuarioFunction2 M    //usuarioFunction2 Brasil
+            }
+
+            //ou for-in (itera com um objeto usuarioFunction)
+            for (var prop2 in usuarioFunction) {
+                // console.log(prop2); //nome  //idade //sexo  //pais
+                console.log(prop2, usuarioFunction[prop2]);
+                //nome Matheus Oliveira
+                //idade 24
+                //sexo M
+                //pais Brasil
+            }
+
+            //Usando hasOwnProperty: if (nomeObj.hasOwnProperty(nomePropriedade))
+            for (var prop2 in usuarioFunction) {
+                if (usuarioFunction.hasOwnProperty(prop2)) {
+                    console.log(prop2, usuarioFunction[prop2]);
+                    //nome Matheus Oliveira
+                    //idade 24
+                    //sexo M
+                    //pais Brasil
+                }
+            }
+        </script>
+    </body>
+</html>
