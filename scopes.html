@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Scopes</title>
+    </head>
+    <body>
+        <script>
+            //Usando escopo dinâmico: o JS descobre o valor da variável na hora que buildar.
+            function imprimeThis() {
+                console.log('imprimeThis', this);
+            }
+
+            function imprimeMensagem() {
+                imprimeThis.call( {msg: 'Sou um objeto'})
+            }
+
+            //Invoca imprimeThis 
+            function imprimeMensagem2() {
+                imprimeThis.call(['Sou um array']);
+            }
+
+            imprimeMensagem();
+            imprimeMensagem2();
+
+
+            //Usando escopo escopo lexico: o JS já sabe qual é o valor da variável
+            function usuario() {
+                var nome = 'Matheus';
+                return function() {
+                    var sobrenome = 'Oliveira';
+                    console.log(nome, sobrenome);
+                }
+            }
+
+            var user = usuario();
+            user();
+
+
+            //Usando escopo de bloco: utiliza if, switch-case, for-loop
+            if (true) {
+                var cidade = 'Porto Alegre';
+                let autor = 'Matheus'
+                console.log(cidade);
+            }
+
+            console.log(cidade);
+            // console.log(autor); //autor só existe no bloco do if,pois é utilizada uma let, por isso não é reconhecida globalmente
+
+            let estado = 'RS';
+            console.log(estado);
+
+            //estado foi sobrescrito, pois não é utilizada let.
+            estado = 'RJ';
+            console.log(estado);
+        </script>
+    </body>
+</html>
