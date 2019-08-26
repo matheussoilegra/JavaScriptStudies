@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hoisting</title>
+    </head>
+    <body>
+        <script>
+            console.log(soma(10, 5));
+            function soma(a, b) {
+                return a + b;
+            }
+
+            function testaHoisting() {
+                console.log('testaHoisting', aaa);
+                var aaa = 123;
+                console.log('testaHoisting', aaa);
+            }
+
+            testaHoisting();
+
+
+            function calcula() {
+                return geraResultado();
+
+                /*
+                Muita lógica de código aqui...
+                */
+
+                function soma(a, b) {
+                    return a + b;
+                }
+
+                function geraResultado() {
+                    return soma(10, 5 ) / 3;
+                }
+            }
+
+            console.log(calcula());
+        </script>
+    </body>
+</html>
