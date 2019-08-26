@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Constantes</title>
+    </head>
+    <body>
+        <script>
+            const anoNascimento = 1994;
+            console.log(anoNascimento);
+
+            if (true) {
+                const autor = 'Matheus';
+                console.log(autor);
+            }
+
+            //Alterar um valor da constante mas sem reatribuir essa constante
+            const competencias = ['JavaScript', 'Python','Go'];
+            console.log(competencias);
+
+            competencias[1] = 'Scala'
+            console.log(competencias);
+
+
+            const usuario = {
+                nome: 'Matheus',
+                idade: 24
+            };
+
+            console.log(usuario);
+
+            usuario.idade = 50;
+            usuario.cidade = 'Porto Alegre';
+            console.log(usuario);
+        </script>
+    </body>
+</html>
