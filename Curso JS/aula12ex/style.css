@@ -1,6 +1,7 @@
 body {
     background: #90c0f8;
     font: normal 15pt Arial;
+    box-sizing: border-box;
 }
 
 header {
